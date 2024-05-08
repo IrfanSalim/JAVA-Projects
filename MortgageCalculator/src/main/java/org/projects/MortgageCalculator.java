@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * This is the main class for the mortgage calculator.
  */
-public class Main {
+public class MortgageCalculator {
 
     /**
      * The main method that prompts the user for input and calls the calculateMortgage method.
@@ -19,9 +19,9 @@ public class Main {
         // Prompt the user for input
         System.out.println("Welcome to your mortgage calculator!");
         System.out.print("Enter the loan amount: ");
-        long principal = sc.nextLong();
+        int principal = sc.nextInt();
         System.out.print("Enter the annual interest rate: ");
-        double interest = sc.nextDouble();
+        float interest = sc.nextFloat();
         System.out.print("Enter the number of years: ");
         int years = sc.nextInt();
 
@@ -43,9 +43,10 @@ public class Main {
      * @param years The number of years.
      * @return The mortgage amount.
      */
-    private static double calculateMortgage(long principal, double interest, int years) {
+    public static double calculateMortgage(int principal, float interest, int years) {
         int months = years * 12;
-        double monthlyInterest = (interest / 100) / 12;
-        return principal * (monthlyInterest * Math.pow(1 + monthlyInterest, months)) / (Math.pow(1 + monthlyInterest, months) - 1);
+        float monthlyInterest = (interest / 100) / 12;
+        double mort =  principal * (monthlyInterest * Math.pow(1 + monthlyInterest, months)) / (Math.pow(1 + monthlyInterest, months) - 1);
+        return Math.round(mort * 100.0) / 100.0;
     }
 }
